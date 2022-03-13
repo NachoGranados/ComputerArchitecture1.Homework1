@@ -1,0 +1,82 @@
+
+lfsr:     formato del fichero elf32-littleriscv
+
+
+Desensamblado de la sección .text:
+
+00010054 <_start>:
+   10054:	4525                	li	a0,9
+   10056:	45a9                	li	a1,10
+   10058:	4601                	li	a2,0
+   1005a:	842e                	mv	s0,a1
+
+0001005c <_while>:
+   1005c:	00a622b3          	slt	t0,a2,a0
+   10060:	08028263          	beqz	t0,100e4 <_exit>
+   10064:	0015f313          	andi	t1,a1,1
+   10068:	0015d393          	srli	t2,a1,0x1
+   1006c:	0013f393          	andi	t2,t2,1
+   10070:	0063ce33          	xor	t3,t2,t1
+   10074:	0e0e                	slli	t3,t3,0x3
+   10076:	0015de93          	srli	t4,a1,0x1
+   1007a:	01de65b3          	or	a1,t3,t4
+
+0001007e <_next0>:
+   1007e:	00162f13          	slti	t5,a2,1
+   10082:	000f0463          	beqz	t5,1008a <_next1>
+   10086:	84ae                	mv	s1,a1
+   10088:	a8a1                	j	100e0 <_continue>
+
+0001008a <_next1>:
+   1008a:	00262f13          	slti	t5,a2,2
+   1008e:	000f0463          	beqz	t5,10096 <_next2>
+   10092:	892e                	mv	s2,a1
+   10094:	a0b1                	j	100e0 <_continue>
+
+00010096 <_next2>:
+   10096:	00362f13          	slti	t5,a2,3
+   1009a:	000f0463          	beqz	t5,100a2 <_next3>
+   1009e:	89ae                	mv	s3,a1
+   100a0:	a081                	j	100e0 <_continue>
+
+000100a2 <_next3>:
+   100a2:	00462f13          	slti	t5,a2,4
+   100a6:	000f0463          	beqz	t5,100ae <_next4>
+   100aa:	8a2e                	mv	s4,a1
+   100ac:	a815                	j	100e0 <_continue>
+
+000100ae <_next4>:
+   100ae:	00562f13          	slti	t5,a2,5
+   100b2:	000f0463          	beqz	t5,100ba <_next5>
+   100b6:	8aae                	mv	s5,a1
+   100b8:	a025                	j	100e0 <_continue>
+
+000100ba <_next5>:
+   100ba:	00662f13          	slti	t5,a2,6
+   100be:	000f0463          	beqz	t5,100c6 <_next6>
+   100c2:	8b2e                	mv	s6,a1
+   100c4:	a831                	j	100e0 <_continue>
+
+000100c6 <_next6>:
+   100c6:	00762f13          	slti	t5,a2,7
+   100ca:	000f0463          	beqz	t5,100d2 <_next7>
+   100ce:	8bae                	mv	s7,a1
+   100d0:	a801                	j	100e0 <_continue>
+
+000100d2 <_next7>:
+   100d2:	00862f13          	slti	t5,a2,8
+   100d6:	000f0463          	beqz	t5,100de <_next8>
+   100da:	8c2e                	mv	s8,a1
+   100dc:	a011                	j	100e0 <_continue>
+
+000100de <_next8>:
+   100de:	8cae                	mv	s9,a1
+
+000100e0 <_continue>:
+   100e0:	0605                	addi	a2,a2,1
+   100e2:	bfad                	j	1005c <_while>
+
+000100e4 <_exit>:
+   100e4:	02a00513          	li	a0,42
+   100e8:	05d00893          	li	a7,93
+   100ec:	00000073          	ecall
